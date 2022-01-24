@@ -4,7 +4,7 @@ import {ImdbMovieQueryResponseData} from '../types/ImdbRequestTypes';
 import {ImdbMovieData} from '../types/MovieTypes';
 
 export class ImdbRequestService {
-  private apiBaseUrl = `http://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_API_KEY}/`;
+  private apiBaseUrl = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_OMDB_API_KEY}/`;
   private pageBaseUrl = 'https://www.imdb.com/title/';
 
   async getMovieData(movieTitle: string): Promise<ImdbMovieData | undefined> {
