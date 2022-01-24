@@ -2,7 +2,7 @@
 
 ## Viewing the project
 
-The app is available on [https://apexlab-movies.herokuapp.com/](https://apexlab-movies.herokuapp.com/) (can be a bit slow to start).
+The app is available on [http://apexlabs.webfejlesztomentor.hu/](http://apexlabs.webfejlesztomentor.hu/).
 
 ## Starting the project locally
 
