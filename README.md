@@ -2,7 +2,7 @@
 
 ## Viewing the project
 
-The app is available on [http://apexlabs.webfejlesztomentor.hu/](http://apexlabs.webfejlesztomentor.hu/).
+The app is available to try on [http://apexlabs.webfejlesztomentor.hu/](http://apexlabs.webfejlesztomentor.hu/).
 
 ## Starting the project locally
 
