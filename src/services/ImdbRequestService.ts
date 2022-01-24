@@ -8,7 +8,6 @@ export class ImdbRequestService {
   private pageBaseUrl = 'https://www.imdb.com/title/';
 
   async getMovieData(movieTitle: string): Promise<ImdbMovieData | undefined> {
-    console.log(process.env.REACT_APP_OMDB_API_KEY, process.env.REACT_APP_OMDB_API_KEY);
     const url = this.apiBaseUrl + movieTitle;
 
     try {

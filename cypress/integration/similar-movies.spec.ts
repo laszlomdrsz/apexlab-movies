@@ -9,20 +9,20 @@ describe('Similar movies', () => {
   });
 
   it('should display similar movies on multiple levels', () => {
-    cy.get('[data-testid="ListItemName"]').first().click();
+    cy.get('[data-testid="MovieItemName"]').first().click();
     cy.contains(/Similar movies/i).click();
-    cy.get('[data-testid="ListItemName"]').first().click();
+    cy.get('[data-testid="MovieItemName"]').first().click();
     cy.contains(/Similar movies/i).click();
-    cy.get('[data-testid="ListItemName"]');
+    cy.get('[data-testid="MovieItemName"]');
   });
 
   it('should have proper navigation', () => {
     cy.contains(`Showing movies similar to '${firstMovie}'`);
-    cy.get('[data-testid="ListItemName"]').then((ListItemNames) => {
-      const ListItemName = ListItemNames[0];
-      ListItemName.click();
+    cy.get('[data-testid="MovieItemName"]').then((MovieItemNames) => {
+      const movieItemName = MovieItemNames[0];
+      movieItemName.click();
       cy.contains(/Similar movies/i).click();
-      cy.contains(`Showing movies similar to '${ListItemName.innerHTML}'`);
+      cy.contains(`Showing movies similar to '${movieItemName.innerHTML}'`);
       cy.contains(`Back to search results: '${firstMovieSearch}'`).click();
       cy.get('@searchInput').should('have.value', firstMovieSearch);
     });

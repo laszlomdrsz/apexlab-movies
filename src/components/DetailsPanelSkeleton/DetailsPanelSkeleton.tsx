@@ -5,7 +5,7 @@ const DetailsPanelSkeleton = () => {
   const getRow = (index: number) => {
     const width = 100 - Math.random() * 30 + '%';
     return (
-      <Box key={index}>
+      <Box key={index} data-testid="DetailsPanelSkeletonRow" data-test-width={width}>
         <Skeleton variant="rectangular" width={width} height={24} sx={{mb: '2px'}} />
       </Box>
     );

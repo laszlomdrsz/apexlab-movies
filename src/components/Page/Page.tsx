@@ -1,9 +1,9 @@
 import {Container} from '@mui/material';
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {toast} from 'react-toastify';
 import TmdbRequestService from '../../services/TmdbRequestService';
 import {MovieOverview} from '../../types/MovieTypes';
-import List from '../List/List';
+import MovieList from '../MovieList/MovieList';
 import TopBar from '../TopBar/TopBar';
 
 const Page = () => {
@@ -12,6 +12,16 @@ const Page = () => {
   const [similarMovie, setSimilarMovie] = useState<MovieOverview | undefined>(undefined);
   const lastRequestId = useRef(0);
   const lastSearch = useRef('');
+  const mounted = useRef(true);
+
+  useEffect(() => {
+    // This is needed to prevent memory leaks caused by unmounting before loading details has completed
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+      return;
+    };
+  }, [movies]);
 
   const manageLoadingMovies = async (promise: Promise<MovieOverview[]>) => {
     setLoading(true);
@@ -19,7 +29,7 @@ const Page = () => {
     try {
       const loadedMovies = await promise;
       // This is to prevent issues from multiple concurrent load requests from the user
-      if (lastRequestId.current !== requestId) return;
+      if (lastRequestId.current !== requestId || !mounted.current) return;
       setMovies(loadedMovies);
     } catch (error) {
       handleLoadingMoviesError(error);
@@ -34,6 +44,7 @@ const Page = () => {
   };
 
   const loadSearchedMovies = async (search: string) => {
+    if (!search) return;
     setSimilarMovie(undefined);
     await manageLoadingMovies(TmdbRequestService.searchMovies(search));
     lastSearch.current = search;
@@ -65,7 +76,7 @@ const Page = () => {
         onSearchSubmit={handleSearchSubmit}
       />
       <Container sx={{pt: 2}}>
-        <List movies={movies} loading={loading} onSimilarClick={handleSimilarClick} />
+        <MovieList movies={movies} loading={loading} onSimilarClick={handleSimilarClick} />
       </Container>
     </React.Fragment>
   );

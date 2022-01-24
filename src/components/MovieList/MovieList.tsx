@@ -1,23 +1,23 @@
-import {Fade, Typography} from '@mui/material';
+import {Box, Fade, Typography} from '@mui/material';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 import React from 'react';
 import {MovieOverview} from '../../types/MovieTypes';
-import ListItem from '../ListItem/ListItem';
-import ListItemSkeleton from '../ListItemSkeleton/ListItemSkeleton';
+import MovieItem from '../MovieItem/MovieItem';
+import MovieItemSkeleton from '../MovieItemSkeleton/MovieItemSkeleton';
 import config from '../../config/config';
 
-interface ListProps {
+interface MovieListProps {
   movies?: MovieOverview[];
   loading: boolean;
   onSimilarClick: (movie: MovieOverview) => any;
 }
 
-const List = ({movies, loading, onSimilarClick}: ListProps) => {
-  const renderListOrLoading = () => {
-    return <div>{loading ? <ListItemSkeleton /> : renderListItems()}</div>;
+const MovieList = ({movies, loading, onSimilarClick}: MovieListProps) => {
+  const renderItemsOrLoading = () => {
+    return <Box>{loading ? <MovieItemSkeleton /> : renderItems()}</Box>;
   };
 
-  const renderListItems = () => {
+  const renderItems = () => {
     if (movies && !movies.length) {
       return (
         <Fade in={true} timeout={config.fadeTimeout}>
@@ -28,16 +28,16 @@ const List = ({movies, loading, onSimilarClick}: ListProps) => {
       );
     }
     return movies?.map((movie, index) => (
-      <ListItem
+      <MovieItem
         key={movie.id}
         movie={movie}
         index={index}
         onSimilarClick={() => onSimilarClick(movie)}
-      ></ListItem>
+      ></MovieItem>
     ));
   };
 
-  return <React.Fragment>{renderListOrLoading()}</React.Fragment>;
+  return <React.Fragment>{renderItemsOrLoading()}</React.Fragment>;
 };
 
-export default List;
+export default MovieList;

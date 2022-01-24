@@ -2,7 +2,7 @@
 
 ## Viewing the project
 
-The app is available on [https://apexlab-movies.herokuapp.com/](https://apexlab-movies.herokuapp.com/) (can be a bit slow to start and needs a few page reloads sometimes).
+The app is available on [https://apexlab-movies.herokuapp.com/](https://apexlab-movies.herokuapp.com/) (can be a bit slow to start).
 
 ## Starting the project locally
 
@@ -21,6 +21,11 @@ The app is available on [https://apexlab-movies.herokuapp.com/](https://apexlab-
 3. Cypress test runner will start, but wait for the web server to start on [http://localhost:3000](http://localhost:3000).
 4. When the web server has started, run Integration tests folder in Cypress.
 
+### Unit tests
+
+1. Complete at least the first 2 steps for starting locally.
+2. Run `npm run test`.
+
 
 ## Notes about the task
 
@@ -28,3 +33,4 @@ The app is available on [https://apexlab-movies.herokuapp.com/](https://apexlab-
 - I haven't implemented proper HTML semantics (e.g. H tags) because it would have required changing the layout of the app and didn't seem to matter that much for the scope of this project.
 - Although design was secondary, I had a lot of fun with MUI, so I used this project as an opportunity to experiment with some of its features (skeletons as loading animations instead of spinners, crossfade function, stars for displaying movie scores).
 - Ideally, all of the services would implement interfaces, which would be required by the component calling them, instead of requiring the service itself. But for the size of this project, this seemed like too much effort and added complexity.
+- Two components and all of the services are missing unit tests because writing tests was already cumbersome and I didn't want to spend more time on this task.

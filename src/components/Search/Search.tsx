@@ -37,8 +37,9 @@ const Search = ({onSubmit, defaultValue = ''}: SearchProps) => {
           placeholder="Type here to search"
           onChange={handleChange}
           sx={{color: '#fff', width: 500, maxWidth: 1}}
+          data-testid="SearchInput"
         />
-        <IconButton type="submit">
+        <IconButton type="submit" data-testid="SearchButton">
           <SearchIcon sx={{color: '#fff'}} />
         </IconButton>
       </Box>
